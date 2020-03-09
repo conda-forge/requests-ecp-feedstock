@@ -1,5 +1,5 @@
 {% set name = "requests-ecp" %}
-{% set version = "0.1.1" %}
+{% set version = "0.2.0" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,21 +7,21 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: b747af386ae69dc6a597e04c000d5aa218f2151e451f57a157208560aea45264
+  sha256: 1aab199758fd27333eced3b161027a6fa9472db0d755fe80c8c4a8644545f95b
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
     - pip
-    - python
+    - python >=3.5
     - setuptools
   run:
     - lxml
-    - python
+    - python >=3.5
     - requests
     - requests-kerberos >=0.9.0
 
