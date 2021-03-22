@@ -9,7 +9,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/requests-ecp-fe
 
 Summary: SAML/ECP authentication handler for python-requests
 
-Development: https://github.com/duncanmmacleod/requests-ecp/
+Development: https://github.com/duncanmmacleod/requests-ecp.git
 
 Documentation: https://requests-ecp.readthedocs.io/
 
