@@ -1,5 +1,5 @@
 {% set name = "requests-ecp" %}
-{% set version = "0.2.2" %}
+{% set version = "0.2.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 82a0cc4df8435d34e36b5981be6feed6b34205e7501f6e63eb64b2ffae7da663
+  sha256: 3ee6e60558d7e36299461424120a83f9d09923db42db4d395e7e94a04138191f
 
 build:
   noarch: python
@@ -23,7 +23,7 @@ requirements:
     - lxml
     - python >=3.5
     - requests
-    - requests-kerberos >=0.9.0
+    - requests-gssapi >=1.2.2
 
 test:
   imports:
