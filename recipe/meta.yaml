@@ -1,5 +1,5 @@
 {% set name = "requests-ecp" %}
-{% set version = "0.3.0" %}
+{% set version = "0.3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f863c3ba717a7733dbb7662ddbdb8e53a12e971eb6594dc009b7f7bc662befdb
+  sha256: 50d42da6511ea8b1f5a0d4287332463c92b2d34f342c2e96e0ae422999113b28
 
 build:
   noarch: python
