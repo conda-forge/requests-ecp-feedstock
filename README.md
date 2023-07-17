@@ -1,11 +1,11 @@
-About requests-ecp
-==================
+About requests-ecp-feedstock
+============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/requests-ecp-feedstock/blob/main/LICENSE.txt)
 
 Home: https://requests-ecp.readthedocs.io/
 
 Package license: GPL-3.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/requests-ecp-feedstock/blob/main/LICENSE.txt)
 
 Summary: SAML/ECP authentication handler for python-requests
 
