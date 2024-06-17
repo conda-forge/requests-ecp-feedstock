@@ -9,7 +9,7 @@ Package license: GPL-3.0-or-later
 
 Summary: SAML/ECP authentication handler for python-requests
 
-Development: https://github.com/duncanmmacleod/requests-ecp.git
+Development: https://git.ligo.org/computing/software/requests-ecp.git
 
 Documentation: https://requests-ecp.readthedocs.io/
 
