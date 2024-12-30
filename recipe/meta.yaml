@@ -6,22 +6,22 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
   sha256: 0febb29207591ffd8120ab67d2753d376539a0384b002c0064edb8b8986dc5d7
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
     - setuptools >=61.0.0
   run:
     - lxml
-    - python >=3.6
+    - python >={{ python_min }}
     - requests
     - requests-gssapi >=1.2.2
 
@@ -31,6 +31,7 @@ test:
   requires:
     - pip
     - pytest >=2.9.2
+    - python {{ python_min }}
     - requests-mock >=1.5.0
   commands:
     # check dependencies
