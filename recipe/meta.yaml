@@ -31,8 +31,8 @@ test:
   requires:
     - pip
     - pytest >=2.9.2
-    - requests-mock >=1.5.0
     - python {{ python_min }}
+    - requests-mock >=1.5.0
   commands:
     # check dependencies
     - python -m pip check requests-ecp
