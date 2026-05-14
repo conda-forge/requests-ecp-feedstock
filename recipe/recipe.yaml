@@ -1,0 +1,56 @@
+schema_version: 1
+
+context:
+  name: requests-ecp
+  version: 0.3.2
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
+  sha256: 0febb29207591ffd8120ab67d2753d376539a0384b002c0064edb8b8986dc5d7
+  patches:
+    - 0001-test-fix-response-mocking-for-requests-2.34.0.patch
+
+build:
+  noarch: python
+  number: 2
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - python ${{ python_min }}.*
+    - setuptools >=61.0.0
+  run:
+    - lxml
+    - python >=${{ python_min }}
+    - requests
+    - requests-gssapi >=1.2.2
+
+tests:
+  - requirements:
+      run:
+        - pip
+        - pytest >=2.9.2
+        - python ${{ python_min }}.*
+        - requests-mock >=1.5.0
+    script:
+      - python -m pip check
+      - python -m pip show requests-ecp
+      - python -m pytest -ra --verbose --color yes --pyargs requests_ecp
+
+about:
+  summary: SAML/ECP authentication handler for python-requests
+  description: A SAML/ECP authencation handler for python-requests
+  homepage: https://requests-ecp.readthedocs.io/
+  repository: https://git.ligo.org/computing/software/requests-ecp.git
+  documentation: https://requests-ecp.readthedocs.io/
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - duncanmmacleod
