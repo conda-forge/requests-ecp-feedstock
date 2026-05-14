@@ -1,0 +1,33 @@
+From bd551ca5ac82d20e38d40498b33be2cc565f4926 Mon Sep 17 00:00:00 2001
+From: Duncan Macleod <macleoddm@cardiff.ac.uk>
+Date: Tue, 12 May 2026 12:24:47 +0100
+Subject: [PATCH] test: fix response mocking for requests 2.34.0
+
+Something changed with the way the auth is handled, which the previous response mocking didn't expect.
+
+(cherry picked from commit dfb9595a96c81aa7c674c8651340ff8866fa9ab5)
+---
+ requests_ecp/tests/test_auth.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/requests_ecp/tests/test_auth.py b/requests_ecp/tests/test_auth.py
+index f66ec9b..8700786 100644
+--- a/requests_ecp/tests/test_auth.py
++++ b/requests_ecp/tests/test_auth.py
+@@ -37,9 +37,12 @@ def mock_authenticate_response(url):
+     """
+     responses = [requests.Response(), requests.Response(), requests.Response()]
+     responses[0].status_code = 200  # SP PAOS request
++    responses[0].request = requests.Request("GET", url).prepare()
+     responses[1].status_code = 200  # IdP SOAP response
++    responses[1].request = requests.Request("POST", url).prepare()
+     responses[2].status_code = 302  # SP response
+-    responses[2].headers['location'] = url
++    responses[2].request = requests.Request("POST", url).prepare()
++    responses[2].headers["location"] = url
+     return responses
+ 
+ 
+-- 
+2.39.5
+
